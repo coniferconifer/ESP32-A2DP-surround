@@ -5,7 +5,9 @@ In the 1970s, various methods were developed to attempt 5.1-channel surround sou
 Personally, I use a 2.1-channel PC speaker system, where the ".1" refers to the dedicated subwoofer for low-frequency sounds. While I'm satisfied with this setup, I've always been curious about experiencing surround sound using the speaker matrix approach.
 
 To explore this, I created an OP-amp circuit capable of generating R-L and L-R signals similar to the speaker matrix method. I connected this circuit to a rear speaker power amplifier (such as PAM8403 or ST893) and observed the resulting surround effect. 
+
 Ref.surroundAMP.png surroundAMP.kicad_sch for Kicad schematic editor.
+
 Indeed, the differential R-L signals allow playback of sounds originating from areas other than the stereo microphone's center, creating a wider soundstage during live playback or applause in 2-channel audio sources.
 
 The famous designer Nagaoka Tetsuo implemented a matrix speaker system where the left speaker carried 2L-R signals, the center speaker played R+L, and the right speaker played 2R-L signals. I wonder what kind of audio experience this configuration would yield.
@@ -14,6 +16,15 @@ To achieve this, I used the ESP32-A2DP library to receive Bluetooth audio and ex
 
 Keep in mind that a power amplifier is necessary to drive the speakers from the DAC output. Existing PC speakers are used to play 2L-R and 2R-L.  
 For the center speaker, I used a small, inexpensive speaker with a built-in power amplifier. The result was a surround sensation, although not precisely 2.1-channel due to the unique configuration.
+
+Referemces:
+
+[1] https://www.pschatzmann.ch/home/2023/07/08/esp32-mixing-a2dp-with-a-sine-signal/
+
+[2] https://github.com/pschatzmann/ESP32-A2DP
+
+[3] MX-15 speaker by Tetsuo Nagaoka
+
 
 In Japanese
 
