@@ -5,7 +5,7 @@
 // This program works as ESP-32 A2DP receiver and converts R,L signals into 2R-L and 2L-R.
 // 
 // R+L for center speaker needs to be made from resister mixer as follows.
-// R and L channel come from DAC (PCM5102A) output.
+// R(2R-L) and L(2L-R) channel come from DAC (PCM5102A) output.
 //
 // 2kOhm x 2 , 100kOhm for GND
 // R-----2kOhm -------+-------Rch Output
@@ -13,6 +13,10 @@
 //                    +--100kOhm-----GND Input/Output
 //                    |
 // L-----2kOhm -------+-------Lch Output
+// for small powered speakers placed side by side or stacked ,
+// it may be OK without hardware mixer. 
+// Because sound from 2R-L + sound from 2L-R => R+L at hearing position.
+//
 /* PCM5102A board is connected by
 GPIO22 -> DIN
 GPIO15 -> LCK
@@ -40,7 +44,7 @@ select partition scheme "NO OTA" from Arduino IDE's tools menu
 
 */
 
-#include "AudioTools.h"
+#include "AudioTools.h"        // https://github.com/pschatzmann/arduino-audio-tools
 #include "BluetoothA2DPSink.h" // https://github.com/pschatzmann/ESP32-A2DP
 
 AudioInfo info(44100, 2, 16);
@@ -89,7 +93,10 @@ void setup() {
   // setup output
   auto cfg = i2s.defaultConfig();
   cfg.copyFrom(info);
-  // cfg.pin_data = 23;
+  // cfg.pin_data = 23; // https://github.com/pschatzmann/ESP32-A2DP/wiki/A2DP-Sink-Optimizations
+    //cfg.pin_bck = 14;
+    //cfg.pin_ws = 15;
+    //cfg.pin_data = 22;
   cfg.buffer_count = 8;
   cfg.buffer_size = 256;
   i2s.begin(cfg);
