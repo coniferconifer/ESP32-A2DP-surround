@@ -31,6 +31,7 @@ Right channel (2R-L)-(2L-R) => 3*(R-L)
 and surround processor by OP-amp works as well.
 
 ![](PCM5102A.JPG) DAC PCM5102A output has a splitter for 2.1ch PC speaker and small center speakers.
+
 ![](SmallCenterSpeakerforR+L.JPG) small powered speakers for center (mixed 2L-R and 2R-L are equivalent to R+L )
 
 Referemces:
