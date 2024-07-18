@@ -11,6 +11,12 @@ I connected this circuit to a rear speaker power amplifier (such as PAM8403 or S
 
 Ref.surroundAMP.png surroundAMP.kicad_sch for Kicad schematic editor.
 
+![](surroundAMP.png)
+
+
+![](surroudAMPblock.png)
+
+
 Indeed, the differential R-L signals allow playback of sounds originating from areas other than the stereo microphone's center, creating a wider soundstage during live playback or applause in 2-channel audio sources.
 
 # MX-15 emulation by ESP32-A2DP
@@ -18,6 +24,8 @@ Indeed, the differential R-L signals allow playback of sounds originating from a
 The famous designer Nagaoka Tetsuo implemented a matrix speaker system where the left speaker carried 2L-R signals, the center speaker played R+L, and the right speaker played 2R-L signals. I wonder what kind of audio experience this configuration would yield.
 
 To achieve this, I used the ESP32-A2DP library to receive Bluetooth audio and extract 2-channel stereo PCM data within callback functions. I then processed this data to create separate 2L-R and 2R-L signals for the left and right speakers. For the R+L signal intended for the center speaker, I used a simple analog mixer with two 2k-ohm resistors and a 100k-ohm resistor. The DAC (PCM5201A) was wired according to the standard GPIO usage of the ESP32-A2DP library.
+
+![](MX15-emulator.png)
 
 Keep in mind that a power amplifier is necessary to drive the speakers from the DAC output. Existing PC speakers are used to play 2L-R and 2R-L.  
 For the center speaker, I used a small, inexpensive speaker with a built-in power amplifier. 
