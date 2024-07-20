@@ -2,6 +2,8 @@
 
 In the 1970s, various methods were developed to attempt 5.1-channel surround sound conversion from 2-channel audio sources using the speaker matrix method. During that time, engineers devised creative wiring solutions to provide R-L signals to the right rear speaker and L-R signals to the left rear speaker. However, with today's power amplifiers utilizing Balanced Transformer Less (BTL) outputs, connecting speakers in a matrix configuration can be risky.
 
+
+
 Personally, I use a 2.1-channel PC speaker system, where the ".1" refers to the dedicated subwoofer for low-frequency sounds. While I'm satisfied with this setup, I've always been curious about experiencing surround sound using the speaker matrix approach.
 
 # Surround processor by OP-amp
@@ -22,6 +24,8 @@ Indeed, the differential R-L signals allow playback of sounds originating from a
 # MX-15 emulation by ESP32-A2DP
 
 The famous designer Nagaoka Tetsuo implemented a matrix speaker system where the left speaker carried 2L-R signals, the center speaker played R+L, and the right speaker played 2R-L signals. I wonder what kind of audio experience this configuration would yield.
+
+![](MX-15speaker.png)
 
 To achieve this, I used the ESP32-A2DP library to receive Bluetooth audio and extract 2-channel stereo PCM data within callback functions. I then processed this data to create separate 2L-R and 2R-L signals for the left and right speakers. For the R+L signal intended for the center speaker, I used a simple analog mixer with two 2k-ohm resistors and a 100k-ohm resistor. The DAC (PCM5201A) was wired according to the standard GPIO usage of the ESP32-A2DP library.
 
